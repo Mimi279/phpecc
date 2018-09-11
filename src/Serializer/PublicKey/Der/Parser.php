@@ -2,7 +2,7 @@
 
 namespace Mdanter\Ecc\Serializer\PublicKey\Der;
 
-use FG\ASN1\Object;
+use FG\ASN1\ASNObject;
 use FG\ASN1\Universal\Sequence;
 use Mdanter\Ecc\Math\GmpMathInterface;
 use Mdanter\Ecc\Serializer\Util\CurveOidMapper;
@@ -43,7 +43,7 @@ class Parser
      */
     public function parse($binaryData)
     {
-        $asnObject = Object::fromBinary($binaryData);
+        $asnObject = ASNObject::fromBinary($binaryData);
 
         if (! ($asnObject instanceof Sequence) || $asnObject->getNumberofChildren() != 2) {
             throw new \RuntimeException('Invalid data.');

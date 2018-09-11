@@ -3,7 +3,7 @@
 namespace Mdanter\Ecc\Serializer\Signature\Der;
 
 use FG\ASN1\Identifier;
-use FG\ASN1\Object;
+use FG\ASN1\ASNObject;
 use Mdanter\Ecc\Crypto\Signature\Signature;
 
 class Parser
@@ -15,7 +15,7 @@ class Parser
      */
     public function parse($binary)
     {
-        $object = Object::fromBinary($binary);
+        $object = ASNObject::fromBinary($binary);
         if ($object->getType() !== Identifier::SEQUENCE) {
             throw new \RuntimeException('Invalid data');
         }
